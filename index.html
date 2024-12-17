@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Gastos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Controle de Gastos</h1>
+    
+    <!-- Formulário para adicionar transações -->
+    <form id="transactionsForm">
+        <input id="description" type="text" placeholder="Descrição" required />
+        <input id="amount" type="number" placeholder="Valor (positivo/negativo)" required />
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <!-- Resumo dos gastos -->
+    <h2>Resumo</h2>
+    <div>
+        <p>Receitas: R$ <span id="income">0.00</span></p>
+        <p>Despesas: R$ <span id="expenses">0.00</span></p>
+        <p>Saldo: R$ <span id="balance">0.00</span></p>
+    </div>
+
+    <!-- Tabela de transações -->
+    <h2>Transações</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody id="transactions"></tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>
