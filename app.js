@@ -1,4 +1,4 @@
-const transactions = []; // Array para armazenar as transações
+const transactions = loadTransactions(); // Carrega as transações do localStorage
 
 // Elementos do DOM
 const incomeElement = document.getElementById("income");
@@ -18,6 +18,7 @@ document.getElementById("transactionsForm").addEventListener("submit", function 
     if (description && !isNaN(amount) && amount !== 0) {
         const transaction = { description, amount };
         transactions.push(transaction); // Adiciona ao array
+        saveTransactions(); // Salva as transações no localStorage
         updateUI(); // Atualiza a interface
     } else {
         alert("Por favor, insira uma descrição e um valor válido (não zero).");
@@ -62,5 +63,20 @@ function updateUI() {
 // Remove uma transação
 function removeTransaction(index) {
     transactions.splice(index, 1); // Remove do array
+    saveTransactions(); // Salva as transações no localStorage
     updateUI(); // Atualiza a interface
 }
+
+// Salva as transações no localStorage
+function saveTransactions() {
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+}
+
+// Carrega as transações do localStorage
+function loadTransactions() {
+    const savedTransactions = localStorage.getItem("transactions");
+    return savedTransactions ? JSON.parse(savedTransactions) : [];
+}
+
+// Atualiza a interface ao carregar a página
+updateUI();
